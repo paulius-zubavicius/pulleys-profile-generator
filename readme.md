@@ -1,7 +1,7 @@
 # Pulley's profile generator 
 
 
-- Exporting as single polygon without any raptures to *.DXF (Drawing Exchange Format from CAD) file.
+- Exporting as single polygon without any raptures to *.DXF (Drawing Exchange Format from CAD) R14 file profile.
 - Supporting belt types: ** MXL DP40 XL H T25 T5 T10 AT5 HTD(3mm) HTD(5mm) HTD(8mm) GT2(2mm) GT2(3mm) GT2(5mm) **
 
 

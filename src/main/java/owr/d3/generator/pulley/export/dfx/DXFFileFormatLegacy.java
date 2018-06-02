@@ -1,18 +1,17 @@
-package owr.d3.generator.pulley.export;
+package owr.d3.generator.pulley.export.dfx;
 
-import owr.d3.generator.pulley.utils.FileUtil;
+public class DXFFileFormatLegacy implements IDXFContentCreator {
 
-public class ExporterToDXF {
+	DXFFileFormatLegacy() {
+	}
 
-	public String exportAsPolyline(double[][] vertexes, String fileName) {
-		StringBuilder sb = new StringBuilder();
+	@Override
+	public void createDXFContent(double[][] vertexes, StringBuilder sb) {
 
 		appendBegin(sb);
 		appendVertexes(sb, vertexes);
 		appendEnd(sb);
-		FileUtil.writeToFile(sb, fileName);
 
-		return fileName;
 	}
 
 	private void appendVertexes(StringBuilder sb, double[][] vertexes) {

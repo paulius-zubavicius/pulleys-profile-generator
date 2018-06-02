@@ -8,7 +8,7 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
-import owr.d3.generator.pulley.export.ExporterToDXF;
+import owr.d3.generator.pulley.export.PulleyProfileExporter;
 import owr.d3.generator.pulley.profile.BeltProfileType;
 import owr.d3.generator.pulley.profile.PulleyProfileGenerator;
 import owr.d3.generator.pulley.profile.PulleyProfileParams;
@@ -73,7 +73,7 @@ public class PulleyGenerator {
 		if (argATW != null) {
 			params.setAdditionalToothWidth(Double.valueOf(argATW));
 		}
-		
+
 		String argATD = cmd.getOptionValue(ARG_ATD);
 		if (argATD != null) {
 			params.setAdditionalToothDepth(Double.valueOf(argATD));
@@ -97,11 +97,12 @@ public class PulleyGenerator {
 
 		PulleyProfileGenerator gen = new PulleyProfileGenerator();
 		double[][] vertexes = gen.createPulleyProfile(params);
+		String fileName = createName(params.getType(), params.getTeethCount());
 
-		ExporterToDXF ex = new ExporterToDXF();
-		String fName = ex.exportAsPolyline(vertexes, createName(params.getType(), params.getTeethCount()));
+		PulleyProfileExporter exporter = new PulleyProfileExporter();
+		exporter.exportAsPolyline(vertexes, fileName);
 
-		System.out.println("Done -> " + fName);
+		System.out.println("Done -> " + fileName);
 	}
 
 	private String createName(BeltProfileType type, int teethCount) {
