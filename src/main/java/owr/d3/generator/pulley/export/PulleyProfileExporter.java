@@ -6,7 +6,7 @@ import owr.d3.generator.pulley.utils.FileUtil;
 
 public class PulleyProfileExporter {
 
-	public void exportAsPolyline(double[][] vertexes, String fileName) {
+	public String exportAsPolyline(double[][] vertexes, String fileName) {
 
 		IDXFContentCreator cc = DXFContentCreatorFactory.getInstance();
 		StringBuilder sb = new StringBuilder();
@@ -15,7 +15,7 @@ public class PulleyProfileExporter {
 		cc.createDXFContent(vertexes, sb);
 
 		// Write to file in working directory
-		FileUtil.writeToFile(sb, fileName);
+		return FileUtil.writeToFile(sb, fileName);
 
 	}
 

@@ -1,6 +1,7 @@
 package owr.d3.generator.pulley.utils;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -8,9 +9,11 @@ public class FileUtil {
 
 	private static final int BSIZE = 1024;
 
-	public static void writeToFile(StringBuilder sb, String fileName) {
+	public static String writeToFile(StringBuilder sb, String fileName) {
 
-		try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileName))) {
+		File f = new File(fileName);
+
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter(f))) {
 
 			int lenght = sb.length();
 
@@ -30,6 +33,8 @@ public class FileUtil {
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
+
+		return f.getAbsolutePath();
 
 	}
 }

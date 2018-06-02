@@ -100,9 +100,10 @@ public class PulleyGenerator {
 		String fileName = createName(params.getType(), params.getTeethCount());
 
 		PulleyProfileExporter exporter = new PulleyProfileExporter();
-		exporter.exportAsPolyline(vertexes, fileName);
+		String pathToFile = exporter.exportAsPolyline(vertexes, fileName);
 
-		System.out.println("Done -> " + fileName);
+		System.out.println("Result: ");
+		System.out.println(pathToFile);
 	}
 
 	private String createName(BeltProfileType type, int teethCount) {
