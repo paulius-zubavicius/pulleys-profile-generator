@@ -15,8 +15,8 @@ import owr.d3.generator.pulley.profile.PulleyProfileParams;
 
 public class PulleyGenerator {
 
-	private static final String ARG_T = "t";
-	private static final String ARG_C = "c";
+	private static final String ARG_PROFILE = "p";
+	private static final String ARG_TCOUNT = "t";
 	private static final String ARG_ATW = "atw";
 	private static final String ARG_ATD = "atd";
 
@@ -27,11 +27,11 @@ public class PulleyGenerator {
 
 		Options options = new Options();
 
-		Option optType = new Option(ARG_T, true, "Belt type / model. One of: " + beltTypes());
+		Option optType = new Option(ARG_PROFILE, true, "Belt profile. One of: " + beltTypes());
 		optType.setRequired(true);
 		options.addOption(optType);
 
-		Option optTc = new Option(ARG_C, true, "Teeth count. Value should be 3 or more");
+		Option optTc = new Option(ARG_TCOUNT, true, "Teeth count. Value should be >= 3");
 		optTc.setRequired(true);
 		options.addOption(optTc);
 
@@ -57,10 +57,10 @@ public class PulleyGenerator {
 			return;
 		}
 
-		String argT = cmd.getOptionValue(ARG_T);
+		String argT = cmd.getOptionValue(ARG_PROFILE);
 		BeltProfileType type = BeltProfileType.valueOf(argT);
 
-		String argC = cmd.getOptionValue(ARG_C);
+		String argC = cmd.getOptionValue(ARG_TCOUNT);
 		int teethCount = Integer.valueOf(argC);
 		if (teethCount < 3) {
 			teethCount = 3;
